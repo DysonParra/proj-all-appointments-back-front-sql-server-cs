@@ -1,0 +1,104 @@
+﻿@model Project.Models.Appointment
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Appointment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IntId" />
+            <div class="form-group">
+                <label asp-for="DtDateCreated" class="control-label"></label>
+                <input asp-for="DtDateCreated" class="form-control" />
+                <span asp-validation-for="DtDateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StrClientName" class="control-label"></label>
+                <input asp-for="StrClientName" class="form-control" />
+                <span asp-validation-for="StrClientName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StrClientContact" class="control-label"></label>
+                <input asp-for="StrClientContact" class="form-control" />
+                <span asp-validation-for="StrClientContact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DtStartTime" class="control-label"></label>
+                <input asp-for="DtStartTime" class="form-control" />
+                <span asp-validation-for="DtStartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DtEndTimeExpected" class="control-label"></label>
+                <input asp-for="DtEndTimeExpected" class="form-control" />
+                <span asp-validation-for="DtEndTimeExpected" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DtEndTime" class="control-label"></label>
+                <input asp-for="DtEndTime" class="form-control" />
+                <span asp-validation-for="DtEndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DecPriceExpected" class="control-label"></label>
+                <input asp-for="DecPriceExpected" class="form-control" />
+                <span asp-validation-for="DecPriceExpected" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DecPriceFull" class="control-label"></label>
+                <input asp-for="DecPriceFull" class="form-control" />
+                <span asp-validation-for="DecPriceFull" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DecDiscount" class="control-label"></label>
+                <input asp-for="DecDiscount" class="form-control" />
+                <span asp-validation-for="DecDiscount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DecPriceFinal" class="control-label"></label>
+                <input asp-for="DecPriceFinal" class="form-control" />
+                <span asp-validation-for="DecPriceFinal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BitCanceled" class="control-label"></label>
+                <input asp-for="BitCanceled" class="form-control" />
+                <span asp-validation-for="BitCanceled" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TxtCancelationReason" class="control-label"></label>
+                <input asp-for="TxtCancelationReason" class="form-control" />
+                <span asp-validation-for="TxtCancelationReason" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IntClientId" class="control-label"></label>
+                <input asp-for="IntClientId" class="form-control" />
+                <span asp-validation-for="IntClientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IntEmployeeCreated" class="control-label"></label>
+                <input asp-for="IntEmployeeCreated" class="form-control" />
+                <span asp-validation-for="IntEmployeeCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IntEmployeeId" class="control-label"></label>
+                <input asp-for="IntEmployeeId" class="form-control" />
+                <span asp-validation-for="IntEmployeeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

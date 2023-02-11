@@ -1,0 +1,119 @@
+﻿@model IEnumerable<Project.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DtDateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrClientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrClientContact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DtStartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DtEndTimeExpected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DtEndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DecPriceExpected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DecPriceFull)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DecDiscount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DecPriceFinal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BitCanceled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TxtCancelationReason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntClientId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntEmployeeCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntEmployeeId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtDateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrClientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrClientContact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtStartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtEndTimeExpected)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtEndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DecPriceExpected)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DecPriceFull)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DecDiscount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DecPriceFinal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BitCanceled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TxtCancelationReason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntClientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntEmployeeCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntEmployeeId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IntId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IntId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IntId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

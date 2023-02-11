@@ -1,0 +1,44 @@
+﻿@model Project.Models.ServiceProvided
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ServiceProvided</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IntId" />
+            <div class="form-group">
+                <label asp-for="DecPrice" class="control-label"></label>
+                <input asp-for="DecPrice" class="form-control" />
+                <span asp-validation-for="DecPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IntAppointmentI" class="control-label"></label>
+                <input asp-for="IntAppointmentI" class="form-control" />
+                <span asp-validation-for="IntAppointmentI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IntServiceId" class="control-label"></label>
+                <input asp-for="IntServiceId" class="form-control" />
+                <span asp-validation-for="IntServiceId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
