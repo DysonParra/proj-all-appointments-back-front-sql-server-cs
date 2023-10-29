@@ -16,7 +16,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 /**
- * TODO: Definición de {@code Client}.
+ * TODO: Description of {@code Client}.
  *
  * @author Dyson Parra
  */

@@ -16,7 +16,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 /**
- * TODO: Definición de {@code Schedule}.
+ * TODO: Description of {@code Schedule}.
  *
  * @author Dyson Parra
  */
