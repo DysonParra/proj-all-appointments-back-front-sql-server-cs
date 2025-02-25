@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Appointments.Data;
 using Project.Models;
 
-namespace Appointments.Controllers
-{
-    public class ScheduleController : Controller
-    {
+namespace Appointments.Controllers {
+
+    /**
+     * TODO: Description of {@code ScheduleController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class ScheduleController : Controller {
         private readonly AppointmentsContext _context;
 
-        public ScheduleController(AppointmentsContext context)
-        {
+        public ScheduleController(AppointmentsContext context) {
             _context = context;
         }
 
         // GET: Schedule
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.Schedule.ToListAsync());
         }
 
         // GET: Schedule/Details/5
-        public async Task<IActionResult> Details(long? id)
-        {
-            if (id == null || _context.Schedule == null)
-            {
+        public async Task<IActionResult> Details(long? id) {
+            if (id == null || _context.Schedule == null) {
                 return NotFound();
             }
 
             var schedule = await _context.Schedule
                 .FirstOrDefaultAsync(m => m.IntId == id);
-            if (schedule == null)
-            {
+            if (schedule == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Appointments.Controllers
         }
 
         // GET: Schedule/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Appointments.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IntId,DtFrom,DtTo,IntEmployeeId")] Schedule schedule)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("IntId,DtFrom,DtTo,IntEmployeeId")] Schedule schedule) {
+            if (ModelState.IsValid) {
                 _context.Add(schedule);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Appointments.Controllers
         }
 
         // GET: Schedule/Edit/5
-        public async Task<IActionResult> Edit(long? id)
-        {
-            if (id == null || _context.Schedule == null)
-            {
+        public async Task<IActionResult> Edit(long? id) {
+            if (id == null || _context.Schedule == null) {
                 return NotFound();
             }
 
             var schedule = await _context.Schedule.FindAsync(id);
-            if (schedule == null)
-            {
+            if (schedule == null) {
                 return NotFound();
             }
             return View(schedule);
@@ -100,28 +94,21 @@ namespace Appointments.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("IntId,DtFrom,DtTo,IntEmployeeId")] Schedule schedule)
-        {
-            if (id != schedule.IntId)
-            {
+        public async Task<IActionResult> Edit(long? id, [Bind("IntId,DtFrom,DtTo,IntEmployeeId")] Schedule schedule) {
+            if (id != schedule.IntId) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(schedule);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ScheduleExists(schedule.IntId))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!ScheduleExists(schedule.IntId)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Appointments.Controllers
         }
 
         // GET: Schedule/Delete/5
-        public async Task<IActionResult> Delete(long? id)
-        {
-            if (id == null || _context.Schedule == null)
-            {
+        public async Task<IActionResult> Delete(long? id) {
+            if (id == null || _context.Schedule == null) {
                 return NotFound();
             }
 
             var schedule = await _context.Schedule
                 .FirstOrDefaultAsync(m => m.IntId == id);
-            if (schedule == null)
-            {
+            if (schedule == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Appointments.Controllers
         // POST: Schedule/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long? id)
-        {
-            if (_context.Schedule == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(long? id) {
+            if (_context.Schedule == null) {
                 return Problem("Entity set 'AppointmentsContext.Schedule'  is null.");
             }
             var schedule = await _context.Schedule.FindAsync(id);
-            if (schedule != null)
-            {
+            if (schedule != null) {
                 _context.Schedule.Remove(schedule);
             }
 
@@ -167,8 +148,7 @@ namespace Appointments.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ScheduleExists(long? id)
-        {
+        private bool ScheduleExists(long? id) {
             return _context.Schedule.Any(e => e.IntId == id);
         }
     }

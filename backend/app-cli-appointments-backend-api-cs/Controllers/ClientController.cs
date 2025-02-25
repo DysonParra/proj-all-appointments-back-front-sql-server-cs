@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Appointments.Data;
 using Project.Models;
 
-namespace Appointments.Controllers
-{
-    public class ClientController : Controller
-    {
+namespace Appointments.Controllers {
+
+    /**
+     * TODO: Description of {@code ClientController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class ClientController : Controller {
         private readonly AppointmentsContext _context;
 
-        public ClientController(AppointmentsContext context)
-        {
+        public ClientController(AppointmentsContext context) {
             _context = context;
         }
 
         // GET: Client
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.Client.ToListAsync());
         }
 
         // GET: Client/Details/5
-        public async Task<IActionResult> Details(long? id)
-        {
-            if (id == null || _context.Client == null)
-            {
+        public async Task<IActionResult> Details(long? id) {
+            if (id == null || _context.Client == null) {
                 return NotFound();
             }
 
             var client = await _context.Client
                 .FirstOrDefaultAsync(m => m.IntId == id);
-            if (client == null)
-            {
+            if (client == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Appointments.Controllers
         }
 
         // GET: Client/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Appointments.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IntId,StrClientName,StrContactMobile,StrContactMail")] Client client)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("IntId,StrClientName,StrContactMobile,StrContactMail")] Client client) {
+            if (ModelState.IsValid) {
                 _context.Add(client);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Appointments.Controllers
         }
 
         // GET: Client/Edit/5
-        public async Task<IActionResult> Edit(long? id)
-        {
-            if (id == null || _context.Client == null)
-            {
+        public async Task<IActionResult> Edit(long? id) {
+            if (id == null || _context.Client == null) {
                 return NotFound();
             }
 
             var client = await _context.Client.FindAsync(id);
-            if (client == null)
-            {
+            if (client == null) {
                 return NotFound();
             }
             return View(client);
@@ -100,28 +94,21 @@ namespace Appointments.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("IntId,StrClientName,StrContactMobile,StrContactMail")] Client client)
-        {
-            if (id != client.IntId)
-            {
+        public async Task<IActionResult> Edit(long? id, [Bind("IntId,StrClientName,StrContactMobile,StrContactMail")] Client client) {
+            if (id != client.IntId) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(client);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ClientExists(client.IntId))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!ClientExists(client.IntId)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Appointments.Controllers
         }
 
         // GET: Client/Delete/5
-        public async Task<IActionResult> Delete(long? id)
-        {
-            if (id == null || _context.Client == null)
-            {
+        public async Task<IActionResult> Delete(long? id) {
+            if (id == null || _context.Client == null) {
                 return NotFound();
             }
 
             var client = await _context.Client
                 .FirstOrDefaultAsync(m => m.IntId == id);
-            if (client == null)
-            {
+            if (client == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Appointments.Controllers
         // POST: Client/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long? id)
-        {
-            if (_context.Client == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(long? id) {
+            if (_context.Client == null) {
                 return Problem("Entity set 'AppointmentsContext.Client'  is null.");
             }
             var client = await _context.Client.FindAsync(id);
-            if (client != null)
-            {
+            if (client != null) {
                 _context.Client.Remove(client);
             }
 
@@ -167,8 +148,7 @@ namespace Appointments.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ClientExists(long? id)
-        {
+        private bool ClientExists(long? id) {
             return _context.Client.Any(e => e.IntId == id);
         }
     }

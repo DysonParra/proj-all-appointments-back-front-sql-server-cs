@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Appointments.Data;
 using Project.Models;
 
-namespace Appointments.Controllers
-{
-    public class ServiceProvidedController : Controller
-    {
+namespace Appointments.Controllers {
+
+    /**
+     * TODO: Description of {@code ServiceProvidedController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class ServiceProvidedController : Controller {
         private readonly AppointmentsContext _context;
 
-        public ServiceProvidedController(AppointmentsContext context)
-        {
+        public ServiceProvidedController(AppointmentsContext context) {
             _context = context;
         }
 
         // GET: ServiceProvided
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.ServiceProvided.ToListAsync());
         }
 
         // GET: ServiceProvided/Details/5
-        public async Task<IActionResult> Details(long? id)
-        {
-            if (id == null || _context.ServiceProvided == null)
-            {
+        public async Task<IActionResult> Details(long? id) {
+            if (id == null || _context.ServiceProvided == null) {
                 return NotFound();
             }
 
             var serviceProvided = await _context.ServiceProvided
                 .FirstOrDefaultAsync(m => m.IntId == id);
-            if (serviceProvided == null)
-            {
+            if (serviceProvided == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Appointments.Controllers
         }
 
         // GET: ServiceProvided/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Appointments.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IntId,DecPrice,IntAppointmentI,IntServiceId")] ServiceProvided serviceProvided)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("IntId,DecPrice,IntAppointmentI,IntServiceId")] ServiceProvided serviceProvided) {
+            if (ModelState.IsValid) {
                 _context.Add(serviceProvided);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Appointments.Controllers
         }
 
         // GET: ServiceProvided/Edit/5
-        public async Task<IActionResult> Edit(long? id)
-        {
-            if (id == null || _context.ServiceProvided == null)
-            {
+        public async Task<IActionResult> Edit(long? id) {
+            if (id == null || _context.ServiceProvided == null) {
                 return NotFound();
             }
 
             var serviceProvided = await _context.ServiceProvided.FindAsync(id);
-            if (serviceProvided == null)
-            {
+            if (serviceProvided == null) {
                 return NotFound();
             }
             return View(serviceProvided);
@@ -100,28 +94,21 @@ namespace Appointments.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("IntId,DecPrice,IntAppointmentI,IntServiceId")] ServiceProvided serviceProvided)
-        {
-            if (id != serviceProvided.IntId)
-            {
+        public async Task<IActionResult> Edit(long? id, [Bind("IntId,DecPrice,IntAppointmentI,IntServiceId")] ServiceProvided serviceProvided) {
+            if (id != serviceProvided.IntId) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(serviceProvided);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ServiceProvidedExists(serviceProvided.IntId))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!ServiceProvidedExists(serviceProvided.IntId)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Appointments.Controllers
         }
 
         // GET: ServiceProvided/Delete/5
-        public async Task<IActionResult> Delete(long? id)
-        {
-            if (id == null || _context.ServiceProvided == null)
-            {
+        public async Task<IActionResult> Delete(long? id) {
+            if (id == null || _context.ServiceProvided == null) {
                 return NotFound();
             }
 
             var serviceProvided = await _context.ServiceProvided
                 .FirstOrDefaultAsync(m => m.IntId == id);
-            if (serviceProvided == null)
-            {
+            if (serviceProvided == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Appointments.Controllers
         // POST: ServiceProvided/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long? id)
-        {
-            if (_context.ServiceProvided == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(long? id) {
+            if (_context.ServiceProvided == null) {
                 return Problem("Entity set 'AppointmentsContext.ServiceProvided'  is null.");
             }
             var serviceProvided = await _context.ServiceProvided.FindAsync(id);
-            if (serviceProvided != null)
-            {
+            if (serviceProvided != null) {
                 _context.ServiceProvided.Remove(serviceProvided);
             }
 
@@ -167,8 +148,7 @@ namespace Appointments.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ServiceProvidedExists(long? id)
-        {
+        private bool ServiceProvidedExists(long? id) {
             return _context.ServiceProvided.Any(e => e.IntId == id);
         }
     }

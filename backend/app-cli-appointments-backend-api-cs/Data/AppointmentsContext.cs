@@ -19,13 +19,17 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Project.Models;
 
-namespace Appointments.Data
-{
-    public class AppointmentsContext : DbContext
-    {
+namespace Appointments.Data {
+
+    /**
+     * TODO: Description of {@code AppointmentsContext}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class AppointmentsContext : DbContext {
         public AppointmentsContext (DbContextOptions<AppointmentsContext> options)
-            : base(options)
-        {
+            : base(options) {
         }
 
         public DbSet<Project.Models.Appointment> Appointment { get; set; } = default!;
