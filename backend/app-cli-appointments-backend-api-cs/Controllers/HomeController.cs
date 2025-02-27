@@ -27,18 +27,34 @@ namespace Appointments.Controllers {
     public class HomeController : Controller {
         private readonly ILogger<HomeController> _logger;
 
+        /**
+         * TODO: Description of method {@code HomeController}.
+         *
+         */
         public HomeController(ILogger<HomeController> logger) {
             _logger = logger;
         }
 
+        /**
+         * TODO: Description of method {@code Index}.
+         *
+         */
         public IActionResult Index() {
             return View();
         }
 
+        /**
+         * TODO: Description of method {@code Privacy}.
+         *
+         */
         public IActionResult Privacy() {
             return View();
         }
 
+        /**
+         * TODO: Description of method {@code Error}.
+         *
+         */
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

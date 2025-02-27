@@ -33,16 +33,26 @@ namespace Appointments.Controllers {
     public class ServiceProvidedController : Controller {
         private readonly AppointmentsContext _context;
 
+        /**
+         * TODO: Description of method {@code ServiceProvidedController}.
+         *
+         */
         public ServiceProvidedController(AppointmentsContext context) {
             _context = context;
         }
 
-        // GET: ServiceProvided
+        /**
+         * GET: ServiceProvided
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.ServiceProvided.ToListAsync());
         }
 
-        // GET: ServiceProvided/Details/5
+        /**
+         * GET: ServiceProvided/Details/5
+         *
+         */
         public async Task<IActionResult> Details(long? id) {
             if (id == null || _context.ServiceProvided == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Appointments.Controllers {
             return View(serviceProvided);
         }
 
-        // GET: ServiceProvided/Create
+        /**
+         * GET: ServiceProvided/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: ServiceProvided/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: ServiceProvided/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IntId,DecPrice,IntAppointmentI,IntServiceId")] ServiceProvided serviceProvided) {
@@ -76,7 +92,10 @@ namespace Appointments.Controllers {
             return View(serviceProvided);
         }
 
-        // GET: ServiceProvided/Edit/5
+        /**
+         * GET: ServiceProvided/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(long? id) {
             if (id == null || _context.ServiceProvided == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Appointments.Controllers {
             return View(serviceProvided);
         }
 
-        // POST: ServiceProvided/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: ServiceProvided/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long? id, [Bind("IntId,DecPrice,IntAppointmentI,IntServiceId")] ServiceProvided serviceProvided) {
@@ -117,7 +139,10 @@ namespace Appointments.Controllers {
             return View(serviceProvided);
         }
 
-        // GET: ServiceProvided/Delete/5
+        /**
+         * GET: ServiceProvided/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(long? id) {
             if (id == null || _context.ServiceProvided == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Appointments.Controllers {
             return View(serviceProvided);
         }
 
-        // POST: ServiceProvided/Delete/5
+        /**
+         * POST: ServiceProvided/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id) {
@@ -148,6 +176,10 @@ namespace Appointments.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code ServiceProvidedExists}.
+         *
+         */
         private bool ServiceProvidedExists(long? id) {
             return _context.ServiceProvided.Any(e => e.IntId == id);
         }

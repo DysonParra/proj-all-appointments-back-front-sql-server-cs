@@ -33,16 +33,26 @@ namespace Appointments.Controllers {
     public class ScheduleController : Controller {
         private readonly AppointmentsContext _context;
 
+        /**
+         * TODO: Description of method {@code ScheduleController}.
+         *
+         */
         public ScheduleController(AppointmentsContext context) {
             _context = context;
         }
 
-        // GET: Schedule
+        /**
+         * GET: Schedule
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.Schedule.ToListAsync());
         }
 
-        // GET: Schedule/Details/5
+        /**
+         * GET: Schedule/Details/5
+         *
+         */
         public async Task<IActionResult> Details(long? id) {
             if (id == null || _context.Schedule == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Appointments.Controllers {
             return View(schedule);
         }
 
-        // GET: Schedule/Create
+        /**
+         * GET: Schedule/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Schedule/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Schedule/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IntId,DtFrom,DtTo,IntEmployeeId")] Schedule schedule) {
@@ -76,7 +92,10 @@ namespace Appointments.Controllers {
             return View(schedule);
         }
 
-        // GET: Schedule/Edit/5
+        /**
+         * GET: Schedule/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(long? id) {
             if (id == null || _context.Schedule == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Appointments.Controllers {
             return View(schedule);
         }
 
-        // POST: Schedule/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Schedule/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long? id, [Bind("IntId,DtFrom,DtTo,IntEmployeeId")] Schedule schedule) {
@@ -117,7 +139,10 @@ namespace Appointments.Controllers {
             return View(schedule);
         }
 
-        // GET: Schedule/Delete/5
+        /**
+         * GET: Schedule/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(long? id) {
             if (id == null || _context.Schedule == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Appointments.Controllers {
             return View(schedule);
         }
 
-        // POST: Schedule/Delete/5
+        /**
+         * POST: Schedule/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id) {
@@ -148,6 +176,10 @@ namespace Appointments.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code ScheduleExists}.
+         *
+         */
         private bool ScheduleExists(long? id) {
             return _context.Schedule.Any(e => e.IntId == id);
         }

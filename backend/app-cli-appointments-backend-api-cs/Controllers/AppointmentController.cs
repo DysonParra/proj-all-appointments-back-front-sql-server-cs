@@ -33,16 +33,26 @@ namespace Appointments.Controllers {
     public class AppointmentController : Controller {
         private readonly AppointmentsContext _context;
 
+        /**
+         * TODO: Description of method {@code AppointmentController}.
+         *
+         */
         public AppointmentController(AppointmentsContext context) {
             _context = context;
         }
 
-        // GET: Appointment
+        /**
+         * GET: Appointment
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.Appointment.ToListAsync());
         }
 
-        // GET: Appointment/Details/5
+        /**
+         * GET: Appointment/Details/5
+         *
+         */
         public async Task<IActionResult> Details(long? id) {
             if (id == null || _context.Appointment == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Appointments.Controllers {
             return View(appointment);
         }
 
-        // GET: Appointment/Create
+        /**
+         * GET: Appointment/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Appointment/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Appointment/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IntId,DtDateCreated,StrClientName,StrClientContact,DtStartTime,DtEndTimeExpected,DtEndTime,DecPriceExpected,DecPriceFull,DecDiscount,DecPriceFinal,BitCanceled,TxtCancelationReason,IntClientId,IntEmployeeCreated,IntEmployeeId")] Appointment appointment) {
@@ -76,7 +92,10 @@ namespace Appointments.Controllers {
             return View(appointment);
         }
 
-        // GET: Appointment/Edit/5
+        /**
+         * GET: Appointment/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(long? id) {
             if (id == null || _context.Appointment == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Appointments.Controllers {
             return View(appointment);
         }
 
-        // POST: Appointment/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Appointment/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long? id, [Bind("IntId,DtDateCreated,StrClientName,StrClientContact,DtStartTime,DtEndTimeExpected,DtEndTime,DecPriceExpected,DecPriceFull,DecDiscount,DecPriceFinal,BitCanceled,TxtCancelationReason,IntClientId,IntEmployeeCreated,IntEmployeeId")] Appointment appointment) {
@@ -117,7 +139,10 @@ namespace Appointments.Controllers {
             return View(appointment);
         }
 
-        // GET: Appointment/Delete/5
+        /**
+         * GET: Appointment/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(long? id) {
             if (id == null || _context.Appointment == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Appointments.Controllers {
             return View(appointment);
         }
 
-        // POST: Appointment/Delete/5
+        /**
+         * POST: Appointment/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id) {
@@ -148,6 +176,10 @@ namespace Appointments.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code AppointmentExists}.
+         *
+         */
         private bool AppointmentExists(long? id) {
             return _context.Appointment.Any(e => e.IntId == id);
         }

@@ -33,16 +33,26 @@ namespace Appointments.Controllers {
     public class ClientController : Controller {
         private readonly AppointmentsContext _context;
 
+        /**
+         * TODO: Description of method {@code ClientController}.
+         *
+         */
         public ClientController(AppointmentsContext context) {
             _context = context;
         }
 
-        // GET: Client
+        /**
+         * GET: Client
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.Client.ToListAsync());
         }
 
-        // GET: Client/Details/5
+        /**
+         * GET: Client/Details/5
+         *
+         */
         public async Task<IActionResult> Details(long? id) {
             if (id == null || _context.Client == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Appointments.Controllers {
             return View(client);
         }
 
-        // GET: Client/Create
+        /**
+         * GET: Client/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Client/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Client/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IntId,StrClientName,StrContactMobile,StrContactMail")] Client client) {
@@ -76,7 +92,10 @@ namespace Appointments.Controllers {
             return View(client);
         }
 
-        // GET: Client/Edit/5
+        /**
+         * GET: Client/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(long? id) {
             if (id == null || _context.Client == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Appointments.Controllers {
             return View(client);
         }
 
-        // POST: Client/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Client/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long? id, [Bind("IntId,StrClientName,StrContactMobile,StrContactMail")] Client client) {
@@ -117,7 +139,10 @@ namespace Appointments.Controllers {
             return View(client);
         }
 
-        // GET: Client/Delete/5
+        /**
+         * GET: Client/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(long? id) {
             if (id == null || _context.Client == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Appointments.Controllers {
             return View(client);
         }
 
-        // POST: Client/Delete/5
+        /**
+         * POST: Client/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id) {
@@ -148,6 +176,10 @@ namespace Appointments.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code ClientExists}.
+         *
+         */
         private bool ClientExists(long? id) {
             return _context.Client.Any(e => e.IntId == id);
         }
