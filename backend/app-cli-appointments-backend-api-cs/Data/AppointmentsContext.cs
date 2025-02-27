@@ -28,7 +28,12 @@ namespace Appointments.Data {
      * @since .NET 8 (LTS), C# 12
      */
     public class AppointmentsContext : DbContext {
-        public AppointmentsContext (DbContextOptions<AppointmentsContext> options)
+
+        /**
+         * TODO: Description of method {@code AppointmentsContext}.
+         *
+         */
+        public AppointmentsContext(DbContextOptions<AppointmentsContext> options)
             : base(options) {
         }
 
