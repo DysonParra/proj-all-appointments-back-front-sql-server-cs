@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {Appointment}
+ * @overview        {Appointment}
  *
  * @version         2.0
  *

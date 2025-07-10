@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {Client}
+ * @overview        {Client}
  *
  * @version         2.0
  *

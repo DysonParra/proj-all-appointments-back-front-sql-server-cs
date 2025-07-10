@@ -1,5 +1,5 @@
 ﻿/*
- * @fileoverview    {ClientController}
+ * @overview        {ClientController}
  *
  * @version         2.0
  *

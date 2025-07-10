@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {ErrorViewModel}
+ * @overview        {ErrorViewModel}
  *
  * @version         2.0
  *

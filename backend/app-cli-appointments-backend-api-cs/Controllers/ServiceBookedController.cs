@@ -1,5 +1,5 @@
 ﻿/*
- * @fileoverview    {ServiceBookedController}
+ * @overview        {ServiceBookedController}
  *
  * @version         2.0
  *

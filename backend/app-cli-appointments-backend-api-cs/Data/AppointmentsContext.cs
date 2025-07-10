@@ -1,5 +1,5 @@
 ﻿/*
- * @fileoverview    {AppointmentsContext}
+ * @overview        {AppointmentsContext}
  *
  * @version         2.0
  *
